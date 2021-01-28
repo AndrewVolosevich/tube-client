@@ -1,7 +1,7 @@
 import { AnyAction } from "redux";
 import { countActionTypes } from "./actions";
-import { PostStore } from "../../interfaces/store-types";
-import { extend } from "../../utils/extend";
+import { PostStore } from "~/interfaces/store-types";
+import { extend } from "~/utils/extend";
 
 const countInitialState: PostStore = {
   posts: [],

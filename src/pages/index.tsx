@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addCount, subtractCount } from "../stores/count/actions";
-import { RootState } from "../interfaces/store-types";
-import { fetchPosts } from "../stores/posts/actions";
+import { addCount, subtractCount } from "~/stores/count/actions";
+import { RootState } from "~/interfaces/store-types";
+import { fetchPosts } from "~/stores/posts/actions";
 
 const IndexPage = () => {
   const dispatch = useDispatch();
@@ -34,9 +34,9 @@ const IndexPage = () => {
       <hr />
       <h2>Check Redux-Thunk</h2>
       <ul>
-        {posts.map((post) => {
+        {posts.map((post, index) => {
           return (
-            <li>
+            <li key={index}>
               <p>{post.title}</p>
               <p>{post.body}</p>
             </li>

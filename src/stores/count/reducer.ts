@@ -1,6 +1,7 @@
 import { countActionTypes } from "./actions";
-import { CountStore } from "../../interfaces/store-types";
-import { extend } from "../../utils/extend";
+import { CountStore } from "~/interfaces/store-types";
+import { extend } from "~/utils/extend";
+import { AnyAction } from "redux";
 
 const countInitialState: CountStore = {
   count: 0,
@@ -8,7 +9,7 @@ const countInitialState: CountStore = {
 
 export default function reducer(
   state: CountStore = countInitialState,
-  action: any
+  action: AnyAction
 ) {
   switch (action.type) {
     case countActionTypes.ADD:

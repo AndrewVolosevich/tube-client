@@ -1,10 +1,16 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
+import {
+  AnyAction,
+  applyMiddleware,
+  combineReducers,
+  createStore,
+  Middleware,
+} from "redux";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import thunkMiddleware from "redux-thunk";
 import count from "./count/reducer";
 import posts from "./posts/reducer";
 
-const bindMiddleware = (middleware: any) => {
+const bindMiddleware = (middleware: Middleware[]) => {
   if (process.env.NODE_ENV !== "production") {
     const { composeWithDevTools } = require("redux-devtools-extension");
     return composeWithDevTools(applyMiddleware(...middleware));
@@ -17,7 +23,7 @@ const combinedReducer = combineReducers({
   postStore: posts,
 });
 
-const reducer = (state: any, action: any) => {
+const reducer = (state: any, action: AnyAction) => {
   if (action.type === HYDRATE) {
     return {
       ...state, // use previous state
@@ -29,10 +35,7 @@ const reducer = (state: any, action: any) => {
 };
 
 const initStore = () => {
-  return createStore(
-    reducer,
-    bindMiddleware([thunkMiddleware.withExtraArgument({})])
-  );
+  return createStore(reducer, bindMiddleware([thunkMiddleware]));
 };
 
 export const wrapper = createWrapper(initStore, { debug: true });

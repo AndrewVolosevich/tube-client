@@ -1,0 +1,21 @@
+.img_wrapper {
+  min-height: 250px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.content_wrapper {
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 720px) {
+  .img_wrapper {
+    min-height: 450px;
+  }
+  .content_wrapper {
+    margin-top: 0;
+  }
+}

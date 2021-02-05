@@ -1,0 +1,27 @@
+.sidebar {
+  z-index: 100;
+  $width: 300px;
+  position: fixed;
+  max-width: $width;
+  width: 100%;
+  top: 56px;
+  right: -$width;
+  height: calc(100vh - 56px);
+  bottom: 0;
+  padding: 20px 0 0;
+
+  background-color: var(--brand_light);
+  color: var(--white);
+  transition: all var(--transition);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  &.show {
+    visibility: visible;
+    transform: translateX(-$width);
+  }
+}

@@ -1,0 +1,79 @@
+html,
+body {
+  padding: 0;
+  margin: 0 auto;
+  font-weight: normal;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--white);
+  -webkit-tap-highlight-color: transparent;
+  position: absolute;
+
+  &,
+  input {
+    font-family: var(--font), -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;
+  border-spacing: 0;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  text-indent: 0;
+
+  all: unset;
+
+  box-sizing: border-box;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a,
+button {
+  * {
+    pointer-events: none;
+  }
+
+  a,
+  button {
+    pointer-events: auto;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-text-fill-color: currentColor;
+}
+
+p {
+  margin: 0;
+}
+
+#__next {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+svg {
+  display: flex;
+  pointer-events: none;
+}
+
+h1 {
+  margin: 0;
+}

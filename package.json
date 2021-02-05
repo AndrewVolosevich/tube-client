@@ -15,6 +15,7 @@
     "@reduxjs/toolkit": "^1.5.0",
     "@types/react-redux": "^7.1.16",
     "auto-bind": "^4.0.0",
+    "classnames": "^2.2.6",
     "next": "latest",
     "next-compose-plugins": "^2.2.1",
     "next-fonts": "^1.5.1",
@@ -24,6 +25,7 @@
     "react": "^16.12.0",
     "react-detect-offline": "^2.4.1",
     "react-dom": "^16.12.0",
+    "react-image-gallery": "^1.0.8",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
@@ -32,9 +34,11 @@
     "sass": "^1.32.5"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "@types/react-image-gallery": "^1.0.2",
     "husky": "^4.3.8",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",

@@ -1,0 +1,10 @@
+.link {
+  width: 100%;
+  padding: 10px 25px;
+
+  transition: all var(--transition);
+
+  &:hover {
+    background-color: var(--brand);
+  }
+}

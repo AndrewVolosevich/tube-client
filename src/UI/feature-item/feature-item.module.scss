@@ -1,0 +1,21 @@
+.item_wrapper {
+  position: relative;
+  margin-bottom: 15px;
+  padding-left: 50px;
+  color: var(--brand);
+}
+
+.title {
+  margin: 0 0 10px;
+}
+
+.description {
+  margin: 0;
+  color: var(--dark1);
+}
+
+.image_wrapper {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}

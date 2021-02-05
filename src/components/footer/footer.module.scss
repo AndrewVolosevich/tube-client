@@ -1,0 +1,14 @@
+.footer_wrapper {
+  width: 100%;
+  min-height: 80px;
+
+  background-color: var(--brand_dark);
+  color: var(--white);
+
+  h2 {
+    margin: 20px 0 0;
+    text-align: center;
+    font-weight: normal;
+    font-size: 20px;
+  }
+}

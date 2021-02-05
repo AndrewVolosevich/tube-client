@@ -1,6 +1,29 @@
-import React from "react";
+import React, { ReactNode, useState } from "react";
+import Header from "~/components/header";
+import styles from "./layout.module.scss";
+import SideBar from "~/components/header/side-bar";
+import Footer from "~/components/footer";
 
-function Layout() {
-  return <div></div>;
-}
+const Layout = (props: { children: ReactNode }) => {
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+
+  return (
+    <>
+      <Header
+        show={showMenu}
+        onToggleMenu={() => {
+          setShowMenu((old) => !old);
+        }}
+      />
+      <SideBar
+        show={showMenu}
+        onClose={() => {
+          setShowMenu(false);
+        }}
+      />
+      <main className={styles.main}>{props.children}</main>
+      <Footer />
+    </>
+  );
+};
 export default Layout;

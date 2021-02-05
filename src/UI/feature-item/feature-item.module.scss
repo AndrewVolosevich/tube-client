@@ -7,6 +7,10 @@
 
 .title {
   margin: 0 0 10px;
+
+  &.stroke {
+    font-weight: normal;
+  }
 }
 
 .description {
@@ -18,4 +22,9 @@
   position: absolute;
   top: 5px;
   left: 5px;
+
+  &.center {
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }

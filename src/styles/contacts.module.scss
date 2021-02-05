@@ -1,0 +1,48 @@
+.info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  .info_item {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 45px;
+    margin-bottom: 20px;
+
+    color: var(--brand);
+  }
+
+  .info_img {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .info_text {
+    color: var(--dark1);
+
+    b {
+      padding-right: 5px;
+      color: var(--brand);
+    }
+  }
+
+  .tel {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .info {
+    flex-direction: row;
+  }
+
+  .info_item {
+    width: 33%;
+    padding-right: 20px;
+  }
+}

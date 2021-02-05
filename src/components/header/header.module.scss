@@ -3,10 +3,6 @@
   z-index: 100;
   height: 56px;
   width: 100%;
-  padding: 0 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 
   background-color: var(--brand);
   box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%),
@@ -37,4 +33,12 @@
       background-color: var(--brand_dark);
     }
   }
+}
+
+.added_classes {
+  height: 56px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -2,18 +2,21 @@
   max-width: 1140px;
   width: 100%;
   height: auto;
-  padding-top: 40px;
+  padding: 0 20px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 
   & > div {
     width: 100%;
+    margin-top: 20px;
   }
 }
 
 @media screen and (min-width: 720px) {
   .container {
+    padding: 0 40px;
     & > div {
       width: 50%;
     }

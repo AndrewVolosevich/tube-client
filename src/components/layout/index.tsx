@@ -4,7 +4,7 @@ import styles from "./layout.module.scss";
 import SideBar from "~/components/header/side-bar";
 import Footer from "~/components/footer";
 
-const Layout = (props: { children: ReactNode }) => {
+const Layout = (props: { children: ReactNode | HTMLElement }) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
   return (

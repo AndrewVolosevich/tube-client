@@ -1,13 +1,20 @@
 import React from "react";
 import { FeatureItem } from "~/interfaces/utility-types";
-import GearsImg from "~/assets/icons/features/gears.svg";
-import RefreshImg from "~/assets/icons/features/refresh.svg";
-import LikeImg from "~/assets/icons/features/like.svg";
-import StarImg from "~/assets/icons/features/star.svg";
-import UsersImg from "~/assets/icons/features/users.svg";
-import TruckImg from "~/assets/icons/features/truck.svg";
-import MoneyImg from "~/assets/icons/features/money.svg";
-import HappyImg from "~/assets/icons/features/happy.svg";
+
+import GearsImg from "~/assets/icons/home/features/gears.svg";
+import RefreshImg from "~/assets/icons/home/features/refresh.svg";
+import LikeImg from "~/assets/icons/home/features/like.svg";
+import StarImg from "~/assets/icons/home/features/star.svg";
+
+import UsersImg from "~/assets/icons/home/features/users.svg";
+import TruckImg from "~/assets/icons/home/features/truck.svg";
+import MoneyImg from "~/assets/icons/home/features/money.svg";
+import HappyImg from "~/assets/icons/home/features/happy.svg";
+
+import FlagImg from "~/assets/icons/order/flag.svg";
+import CartImg from "~/assets/icons/order/cart.svg";
+import CommentImg from "~/assets/icons/order/comment.svg";
+import CaseImg from "~/assets/icons/order/case.svg";
 
 export const getFeatureItems1 = (): FeatureItem[] => {
   return [
@@ -55,6 +62,31 @@ export const getFeatureItems2 = (): FeatureItem[] => {
       title: `Выгода`,
       description: `Цены ниже, чем у крупных конкурентов при том же качестве`,
       image: <HappyImg />,
+    },
+  ];
+};
+
+export const getOrderFeatures = (): FeatureItem[] => {
+  return [
+    {
+      title: `Работаем быстрее конкурентов!`,
+      description: `Расчет стоимости заказа за 1 день`,
+      image: <FlagImg />,
+    },
+    {
+      title: `Лёгкость в общении`,
+      description: `С нами легче договориться чем с крупными компаниями`,
+      image: <CommentImg />,
+    },
+    {
+      title: `Минимальный объём заказа от 100 штук`,
+      description: `Это конечно можно обсудить...`,
+      image: <CartImg />,
+    },
+    {
+      title: `Сотрудничество`,
+      description: `Сотрудничаем с типографиями и рекламными агентствами`,
+      image: <CaseImg />,
     },
   ];
 };

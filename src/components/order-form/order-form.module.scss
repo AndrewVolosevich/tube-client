@@ -1,0 +1,14 @@
+.form {
+  padding: 30px 20px;
+}
+
+.title {
+  margin: 0 0 0 40px;
+  color: var(--brand);
+}
+
+@media screen and (min-width: 720px) {
+  .form {
+    padding: 30px 40px;
+  }
+}

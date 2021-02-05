@@ -1,16 +1,27 @@
 import React from "react";
+import classNames from "classnames";
 import styles from "./feature-item.module.scss";
 
 const FeatureItem = (props: {
   image: any;
   title: string;
-  description: string;
+  description?: string;
+  imgPos?: "top" | "center";
+  titleStyle?: "stroke" | "bold";
+  addedClasses?: string;
 }) => {
+  const wrapperClasses = classNames(styles.item_wrapper, props.addedClasses);
+  const imageClasses = classNames(styles.image_wrapper, {
+    [styles.center]: props.imgPos === "center",
+  });
+  const titleClasses = classNames(styles.title, {
+    [styles.stroke]: props.titleStyle === "stroke",
+  });
   return (
-    <div className={styles.item_wrapper}>
-      <h3 className={styles.title}>{props.title}</h3>
+    <div className={wrapperClasses}>
+      <h3 className={titleClasses}>{props.title}</h3>
       <p className={styles.description}>{props.description}</p>
-      <div className={styles.image_wrapper}>{props.image}</div>
+      <div className={imageClasses}>{props.image}</div>
     </div>
   );
 };

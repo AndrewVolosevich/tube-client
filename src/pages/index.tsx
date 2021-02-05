@@ -42,7 +42,7 @@ const IndexPage = () => {
         <div
           className={styles.img_wrapper}
           style={{ backgroundImage: "url(/moks-images/img1.jpg)" }}
-        ></div>
+        />
         <div className={styles.content_wrapper}>
           {features1.map((item, idx) => {
             return (
@@ -51,6 +51,7 @@ const IndexPage = () => {
                 image={item.image}
                 title={item.title}
                 description={item.description}
+                addedClasses={styles.addedClasses}
               />
             );
           })}
@@ -65,6 +66,7 @@ const IndexPage = () => {
                 image={item.image}
                 title={item.title}
                 description={item.description}
+                addedClasses={styles.addedClasses}
               />
             );
           })}
@@ -72,7 +74,7 @@ const IndexPage = () => {
         <div
           className={styles.img_wrapper}
           style={{ backgroundImage: "url(/moks-images/img2.jpg)" }}
-        ></div>
+        />
       </HalfPageContainer>
     </Layout>
   );

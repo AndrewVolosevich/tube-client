@@ -14,6 +14,7 @@ const allowedOrigins = [
   "http://localhost:3000",
 ];
 const corsOptions = {
+  // @ts-ignore
   origin: (origin, callback) => {
     if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);

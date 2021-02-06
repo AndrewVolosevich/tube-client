@@ -1,7 +1,7 @@
 .link {
   position: relative;
   width: 100%;
-  padding: 10px 25px 10px 45px;
+  padding: 10px 25px 10px 50px;
   color: var(--white);
 
   font-size: 20px;
@@ -14,7 +14,7 @@
   svg {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 15px;
     transform: translateY(-50%);
   }
 }

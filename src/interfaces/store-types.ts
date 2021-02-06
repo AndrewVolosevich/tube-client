@@ -1,7 +1,7 @@
 import { Post } from "./moky";
 
-export interface CountStore {
-  count: number;
+export interface MainStore {
+  width: number;
 }
 
 export interface PostStore {
@@ -9,6 +9,6 @@ export interface PostStore {
 }
 
 export interface RootState {
-  countStore: CountStore;
+  mainStore: MainStore;
   postStore: PostStore;
 }

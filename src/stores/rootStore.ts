@@ -7,7 +7,7 @@ import {
 } from "redux";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import thunkMiddleware from "redux-thunk";
-import count from "./count/reducer";
+import main from "./main/reducer";
 import posts from "./posts/reducer";
 
 const bindMiddleware = (middleware: Middleware[]) => {
@@ -19,7 +19,7 @@ const bindMiddleware = (middleware: Middleware[]) => {
 };
 
 const combinedReducer = combineReducers({
-  countStore: count,
+  mainStore: main,
   postStore: posts,
 });
 

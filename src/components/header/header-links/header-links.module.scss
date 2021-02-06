@@ -1,0 +1,22 @@
+.links {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  color: var(--white);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 15px;
+  transition: all var(--transition);
+
+  &:hover {
+    background-color: var(--brand_dark);
+  }
+
+  &:active {
+    background-color: var(--brand_light);
+  }
+}

@@ -6,7 +6,7 @@ const Footer = () => {
     <>
       <footer className={styles.footer_wrapper}>
         <h2>
-          Создание и поддержка сайта —
+          {`Создание и поддержка сайта  —  `}
           <a href="mailto:volosevich1989@gmail.com">volosevich1989@gmail.com</a>
         </h2>
       </footer>

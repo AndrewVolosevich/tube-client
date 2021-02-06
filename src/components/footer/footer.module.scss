@@ -1,14 +1,16 @@
 .footer_wrapper {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 80px;
 
   background-color: var(--brand_dark);
   color: var(--white);
 
   h2 {
-    margin: 30px 0 0;
     text-align: center;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 18px;
   }
 }

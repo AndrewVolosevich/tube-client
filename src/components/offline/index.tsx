@@ -1,9 +1,13 @@
 import React from "react";
+import Layout from "~/components/layout";
+import PageTitle from "~/components/page-title/page-title";
 
 const Offline = () => {
   return (
     <>
-      <h1>No internet</h1>
+      <Layout>
+        <PageTitle title={`Упс, кажется соединение с интернетом потеряно...`} />
+      </Layout>
     </>
   );
 };

@@ -11,6 +11,12 @@ export interface FeatureItem {
   image: JSX.Element;
 }
 
+export interface ProductItem {
+  title: string;
+  description: string;
+  src: string;
+}
+
 export interface MenuItem {
   title: string;
   path: string;

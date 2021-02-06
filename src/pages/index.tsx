@@ -5,6 +5,7 @@ import HalfPageContainer from "~/UI/containers/half-page";
 import { getFeatureItems1, getFeatureItems2 } from "~/moky/feature-items";
 import FeatureItem from "~/UI/feature-item";
 import styles from "~/styles/index.module.scss";
+import Container from "~/UI/containers/container";
 
 const images = [
   {
@@ -29,14 +30,16 @@ const features2 = getFeatureItems2();
 const IndexPage = () => {
   return (
     <Layout>
-      <Gallery
-        items={images}
-        showThumbnails={false}
-        showFullscreenButton={false}
-        showPlayButton={false}
-        autoPlay={false}
-        slideDuration={450}
-      />
+      <Container>
+        <Gallery
+          items={images}
+          showThumbnails={false}
+          showFullscreenButton={false}
+          showPlayButton={false}
+          autoPlay={false}
+          slideDuration={450}
+        />
+      </Container>
 
       <HalfPageContainer>
         <div

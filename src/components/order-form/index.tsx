@@ -3,11 +3,13 @@ import TextInput from "~/UI/text-input";
 import { useInput } from "~/hooks/useInput";
 import styles from "./order-form.module.scss";
 import Button from "~/UI/button";
+import Select from "~/UI/select";
+import { diameterOptions, labelOptions } from "~/moky/options";
 
 const OrderForm = () => {
   const heightInput = useInput("");
-  const diameterInput = useInput("");
-  const labelInput = useInput("");
+  const diameterSelect = useInput("");
+  const labelSelect = useInput("");
   const quantityInput = useInput("");
   const nameInput = useInput("");
   const emailInput = useInput("");
@@ -23,15 +25,17 @@ const OrderForm = () => {
             onChange={heightInput.onChange}
             type={"number"}
           />
-          <TextInput
-            label={`Диаметр, мм`}
-            value={diameterInput.value}
-            onChange={diameterInput.onChange}
+          <Select
+            label={"Диаметр, мм"}
+            value={diameterSelect.value}
+            onChange={diameterSelect.onChange}
+            options={diameterOptions}
           />
-          <TextInput
-            label={`Этикетка`}
-            value={labelInput.value}
-            onChange={labelInput.onChange}
+          <Select
+            label={"Этикетка"}
+            value={labelSelect.value}
+            onChange={labelSelect.onChange}
+            options={labelOptions}
           />
           <TextInput
             label={`Колличество, шт`}

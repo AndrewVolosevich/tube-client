@@ -49,6 +49,7 @@ const ContactsPage = () => {
           <FeedbackForm />
         </div>
       </HalfPageContainer>
+      <br />
     </Layout>
   );
 };

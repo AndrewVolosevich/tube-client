@@ -5,7 +5,10 @@ const Footer = () => {
   return (
     <>
       <footer className={styles.footer_wrapper}>
-        <h2>Создание и поддержка сайта — volosevich1989@gmail.com</h2>
+        <h2>
+          Создание и поддержка сайта —
+          <a href="mailto:volosevich1989@gmail.com">volosevich1989@gmail.com</a>
+        </h2>
       </footer>
     </>
   );

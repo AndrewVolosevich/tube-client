@@ -1,7 +1,12 @@
 import { Post } from "./moky";
+import { User } from "~/interfaces/api-types";
 
 export interface MainStore {
   width: number;
+}
+
+export interface UserStore {
+  user: User | null;
 }
 
 export interface PostStore {
@@ -10,5 +15,6 @@ export interface PostStore {
 
 export interface RootState {
   mainStore: MainStore;
+  userStore: UserStore;
   postStore: PostStore;
 }

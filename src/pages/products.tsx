@@ -14,8 +14,8 @@ const ProductsPage = () => {
       <PageTitle title={`Наша продукция`} />
       <Container>
         <div className={styles.products_wrapper}>
-          {products.map((item) => {
-            return <ProductItem product={item} />;
+          {products.map((item, idx) => {
+            return <ProductItem product={item} key={idx} />;
           })}
         </div>
       </Container>

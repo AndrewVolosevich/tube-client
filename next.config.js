@@ -8,9 +8,9 @@ const isProd = process.env.NODE_ENV === "production";
 
 const config = {
   env: {
-    PRODUCT_SERVER_URL: process.env.IS_PROD_SERVER
+    SERVER_URL: process.env.IS_PROD_SERVER
       ? "https://prod.com"
-      : "https://dev.com",
+      : "http://localhost:3333",
   },
   pwa: {
     dest: "public",

@@ -15,7 +15,7 @@ const Header = (props: { show: boolean; onToggleMenu: () => void }) => {
         <Link href={"/"}>
           <a className={styles.logo}>Logo</a>
         </Link>
-        {width <= 720 ? (
+        {width <= 750 ? (
           <button className={styles.menu_btn} onClick={props.onToggleMenu}>
             <HamburgerImg />
           </button>

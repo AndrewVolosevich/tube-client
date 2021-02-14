@@ -31,5 +31,35 @@
 
   &.wide {
     width: 100%;
+    text-align: center;
+  }
+
+  &.main_color {
+    background-color: var(--brand);
+
+    &:hover {
+      background-color: var(--brand_dark);
+    }
+
+    &:active {
+      background-color: var(--brand_light);
+    }
+
+    &.stroke {
+      border: 1px solid var(--brand);
+      color: var(--dark1);
+
+      &:hover {
+        background-color: var(--brand_light);
+      }
+
+      &:active {
+        background-color: var(--brand_dark);
+      }
+    }
+  }
+  &.disabled {
+    background-color: var(--gray5);
+    cursor: default;
   }
 }

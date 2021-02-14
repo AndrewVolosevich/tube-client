@@ -4,6 +4,7 @@ import HomeImg from "~/assets/icons/header/home.svg";
 import ProductsImg from "~/assets/icons/header/products.svg";
 import ContactsImg from "~/assets/icons/header/contacts.svg";
 import OrderImg from "~/assets/icons/header/order.svg";
+import UserImg from "~/assets/icons/header/user.svg";
 
 export const getMenuItems = (): MenuItem[] => {
   return [
@@ -26,6 +27,11 @@ export const getMenuItems = (): MenuItem[] => {
       title: `Контакты`,
       path: "/contacts",
       image: <ContactsImg />,
+    },
+    {
+      title: `Вход`,
+      path: "/auth",
+      image: <UserImg />,
     },
   ];
 };

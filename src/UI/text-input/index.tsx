@@ -2,9 +2,13 @@ import React, { ChangeEvent } from "react";
 import styles from "./text-input.module.scss";
 
 const TextInput = (props: {
+  name: string;
   label: string;
-  value: string;
+  value: string | undefined;
   onChange: (
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) => void;
+  onBlur: (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
   ) => void;
   type?: "text" | "password" | "email" | "tel" | "area" | "number";
@@ -15,9 +19,11 @@ const TextInput = (props: {
         <div className={styles.group}>
           <textarea
             required
+            className={styles.scrollBar}
+            name={props.name}
             value={props.value}
             onChange={props.onChange}
-            className={styles.scrollBar}
+            onBlur={props.onBlur}
           />
           <span className={styles.highlight} />
           <span className={styles.bar} />
@@ -27,9 +33,11 @@ const TextInput = (props: {
         <div className={styles.group}>
           <input
             required
+            name={props.name}
             type={props.type || "text"}
             value={props.value}
             onChange={props.onChange}
+            onBlur={props.onBlur}
           />
           <span className={styles.highlight} />
           <span className={styles.bar} />

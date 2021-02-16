@@ -5,6 +5,7 @@ const TextInput = (props: {
   name: string;
   label: string;
   value: string | undefined;
+  errorMessage?: string;
   onChange: (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
   ) => void;
@@ -42,6 +43,9 @@ const TextInput = (props: {
           <span className={styles.highlight} />
           <span className={styles.bar} />
           <label>{props.label}</label>
+          <span className={styles.error}>
+            {props.errorMessage ? props.errorMessage : " "}
+          </span>
         </div>
       )}
     </>

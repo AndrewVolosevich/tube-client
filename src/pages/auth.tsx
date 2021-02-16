@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Layout from "~/components/layout";
 import Container from "~/UI/containers/container";
@@ -15,10 +14,10 @@ import { User } from "~/interfaces/api-types";
 import { Formik, FormikHelpers } from "formik";
 
 interface AuthFields {
-  username?: string;
-  email: string;
-  password: string;
-  repeatPassword?: string;
+  username?: string | undefined;
+  email?: string | undefined;
+  password?: string | undefined;
+  repeatPassword?: string | undefined;
 }
 
 const AuthPage = () => {
@@ -32,83 +31,75 @@ const AuthPage = () => {
     }
   }, [router.query]);
 
-  const initialFields =
-    authType === "signIn"
-      ? { email: "", password: "" }
-      : { username: "", email: "", password: "", repeatPassword: "" };
-
   const dispatch = useDispatch();
   const saveUser = (data: User) => {
     dispatch(setUser(data));
   };
-  const submitHandler = () => {
-    authType === "signUp"
-      ? api
-          .signUp({
-            username: nameInput.value,
-            email: emailInput.value,
-            password: passwordInput.value,
-          })
-          .then(() => {
-            api
-              .signIn({
-                email: emailInput.value,
-                password: passwordInput.value,
-              })
-              .then((resp) => {
-                saveUser(resp);
-              });
-          })
-          .catch((err) => {
-            console.error(err);
-          })
-      : api
-          .signIn({
-            email: emailInput.value,
-            password: passwordInput.value,
-          })
-          .then((resp: User) => {
-            saveUser(resp);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
+  const submitHandler = (values: AuthFields) => {
+    if (values && authType === "signUp") {
+      return api
+        .signUp({
+          username: values.username,
+          email: values.email,
+          password: values.password,
+        })
+        .then(() => {
+          api
+            .signIn({
+              email: values.email,
+              password: values.password,
+            })
+            .then((resp) => {
+              saveUser(resp);
+            });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else if (values && authType === "signIn") {
+      api
+        .signIn({
+          email: values.email,
+          password: values.password,
+        })
+        .then((resp: User) => {
+          saveUser(resp);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   };
 
-  const validateHandler = (values: AuthFields) => {
-    const errors: AuthFields = initialFields;
-
-    if (authType === "signUp") {
-      if (!values.email) {
-        errors.email = "Поле обязательно для заполнения";
-      } else if (
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-      ) {
-        errors.email = "Проверьте вводимую почту";
-      } else if (!values.password) {
-        errors.password = "Поле обязательно для заполнения";
-      } else if (values.password.length < 6) {
-        errors.password = "Длина пароля должна быть не менее 6 символов";
-      } else if (!values.username) {
-        errors.username = "Поле обязательно для заполнения";
-      } else if (!(values.repeatPassword === values.password)) {
-        errors.repeatPassword = "Пароли должны совпадать";
-      }
-      return errors;
-    } else if (authType === "signIn") {
-      if (!values.email) {
-        errors.email = "Поле обязательно для заполнения";
-      } else if (
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-      ) {
-        errors.email = "Проверьте вводимую почту";
-      } else if (!values.password) {
-        errors.password = "Поле обязательно для заполнения";
-      } else if (values.password.length < 6) {
-        errors.password = "Длина пароля должна быть не менее 6 символов";
-      }
-      return errors;
+  const validateSignUpHandler = (values: AuthFields) => {
+    const errors: AuthFields = {};
+    if (!values.username) {
+      errors.username = "Поле обязательно для заполнения";
+    } else if (!values.email) {
+      errors.email = "Поле обязательно для заполнения";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      errors.email = "Проверьте вводимую почту";
+    } else if (!values.password) {
+      errors.password = "Поле обязательно для заполнения";
+    } else if (values.password.length < 6) {
+      errors.password = "Длина пароля должна быть не менее 6 символов";
+    } else if (!(values.repeatPassword === values.password)) {
+      errors.repeatPassword = "Пароли должны совпадать";
     }
+    return errors;
+  };
+  const validateSignInHandler = (values: AuthFields) => {
+    const errors: AuthFields = {};
+    if (!values.email) {
+      errors.email = "Поле обязательно для заполнения";
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      errors.email = "Проверьте вводимую почту";
+    } else if (!values.password) {
+      errors.password = "Поле обязательно для заполнения";
+    } else if (values.password.length < 6) {
+      errors.password = "Длина пароля должна быть не менее 6 символов";
+    }
+    return errors;
   };
 
   return (
@@ -116,26 +107,43 @@ const AuthPage = () => {
       <PageTitle title={authType === "signUp" ? "Регистрация" : "Вход"} />
       <Container>
         <Formik
-          initialValues={initialFields}
-          validate={validateHandler}
-          onSubmit={(values, { setSubmitting }: FormikHelpers<AuthFields>) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
+          initialValues={{
+            username: "",
+            email: "",
+            password: "",
+            repeatPassword: "",
+          }}
+          validate={
+            authType === "signUp"
+              ? validateSignUpHandler
+              : validateSignInHandler
+          }
+          onSubmit={(
+            values,
+            { setSubmitting, resetForm }: FormikHelpers<AuthFields>
+          ) => {
+            // @ts-ignore
+            submitHandler(values).then(() => {
+              resetForm();
               setSubmitting(false);
-            }, 400);
+            });
           }}
         >
           {({
             values,
             errors,
-            touched,
             handleChange,
             handleBlur,
             handleSubmit,
-            isValidating,
+            handleReset,
+            isValid,
             isSubmitting,
           }) => (
-            <form className={styles.auth_form} onSubmit={handleSubmit}>
+            <form
+              className={styles.auth_form}
+              onSubmit={handleSubmit}
+              noValidate
+            >
               <div className={styles.img_wrapper}>
                 <LockImg />
               </div>
@@ -147,6 +155,7 @@ const AuthPage = () => {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.username}
+                    errorMessage={errors.username}
                   />
                   <TextInput
                     label={`Почта`}
@@ -154,14 +163,15 @@ const AuthPage = () => {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.email}
+                    errorMessage={errors.email}
                   />
-                  {errors.email && touched.email && errors.email}
                   <TextInput
                     label={`Пароль`}
                     name="password"
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.password}
+                    errorMessage={errors.password}
                   />
                   <TextInput
                     label={`Повторите пароль`}
@@ -169,6 +179,7 @@ const AuthPage = () => {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.repeatPassword}
+                    errorMessage={errors.repeatPassword}
                   />
                 </>
               ) : (
@@ -179,6 +190,7 @@ const AuthPage = () => {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.email}
+                    errorMessage={errors.email}
                   />
                   <TextInput
                     label={`Пароль`}
@@ -186,32 +198,34 @@ const AuthPage = () => {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.password}
+                    errorMessage={errors.password}
                   />
                 </>
               )}
               <Button
-                // disabled={!isSubmitting}
+                disabled={isSubmitting || !isValid}
                 type={"submit"}
                 addedClasses={styles.btn}
                 size={"wide"}
                 color={"secondary"}
                 fashion={"fill"}
                 text={authType === "signUp" ? "Зарегистрироваться" : "Войти"}
-                onClick={() => {
-                  console.log(errors, touched);
-                  console.log(values);
-                  console.log(isValidating, isSubmitting);
-                }}
               />
-              <Link
-                href={authType === "signUp" ? "/auth?signIn" : "/auth?signUp"}
+              <a
+                className={styles.link}
+                onClick={() => {
+                  handleReset();
+                  if (authType === "signUp") {
+                    router.push("/auth?signIn");
+                  } else if (authType === "signIn") {
+                    router.push("/auth?signUp");
+                  }
+                }}
               >
-                <a className={styles.link}>
-                  {authType === "signUp"
-                    ? "Уже зарегистрированы? Войти."
-                    : "Нет аккаунта? Зарегистрируйтесь."}
-                </a>
-              </Link>
+                {authType === "signUp"
+                  ? "Уже зарегистрированы? Войти."
+                  : "Нет аккаунта? Зарегистрируйтесь."}
+              </a>
             </form>
           )}
         </Formik>

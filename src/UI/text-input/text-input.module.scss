@@ -1,6 +1,6 @@
 .group {
   position: relative;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   width: 100%;
 
   input {
@@ -120,6 +120,12 @@
   textarea:focus ~ .highlight {
     animation: inputHighlighter 0.3s ease;
   }
+}
+
+.error {
+  padding-left: 5px;
+  color: var(--secondary);
+  font-size: 14px;
 }
 
 /* ANIMATIONS ================ */

@@ -16,22 +16,26 @@ const FeedbackForm = () => {
       <form className={styles.form}>
         <TextInput
           label={`Имя`}
+          name={`name`}
           value={nameInput.value}
           onChange={nameInput.onChange}
         />
         <TextInput
           label={`Email`}
+          name={`email`}
           value={emailInput.value}
           onChange={emailInput.onChange}
         />
         <TextInput
           type={"tel"}
+          name={`tel`}
           label={`Номер телефона`}
           value={telInput.value}
           onChange={telInput.onChange}
         />
         <TextInput
           label={`Текст сообщения`}
+          name={`area`}
           type={"area"}
           value={textInput.value}
           onChange={textInput.onChange}

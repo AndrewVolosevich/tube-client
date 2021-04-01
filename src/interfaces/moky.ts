@@ -8,3 +8,8 @@ export interface Post {
 export interface Option {
   value: string;
 }
+
+export interface User {
+  id: string;
+  name: string;
+}

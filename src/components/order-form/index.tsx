@@ -21,6 +21,7 @@ const OrderForm = () => {
         <form className={styles.form}>
           <TextInput
             label={`Высота, мм`}
+            name={`height`}
             value={heightInput.value}
             onChange={heightInput.onChange}
             type={"number"}
@@ -39,22 +40,26 @@ const OrderForm = () => {
           />
           <TextInput
             label={`Колличество, шт`}
+            name={`count`}
             value={quantityInput.value}
             onChange={quantityInput.onChange}
             type={"number"}
           />
           <TextInput
             label={`Имя`}
+            name={`name`}
             value={nameInput.value}
             onChange={nameInput.onChange}
           />
           <TextInput
             label={`Email`}
+            name={`email`}
             value={emailInput.value}
             onChange={emailInput.onChange}
           />
           <TextInput
             type={"tel"}
+            name={`tel`}
             label={`Номер телефона`}
             value={telInput.value}
             onChange={telInput.onChange}

@@ -41,19 +41,19 @@ const AuthPage = () => {
   const saveUser = (data: User) => {
     dispatch(setUser(data));
   };
-  const submitHandler = () => {
+  const submitHandler = (values: any) => {
     authType === "signUp"
       ? api
           .signUp({
-            username: nameInput.value,
-            email: emailInput.value,
-            password: passwordInput.value,
+            username: values.username,
+            email: values.email,
+            password: values.password,
           })
           .then(() => {
             api
               .signIn({
-                email: emailInput.value,
-                password: passwordInput.value,
+                email: values.email,
+                password: values.password,
               })
               .then((resp) => {
                 saveUser(resp);
@@ -64,8 +64,8 @@ const AuthPage = () => {
           })
       : api
           .signIn({
-            email: emailInput.value,
-            password: passwordInput.value,
+            email: values.email,
+            password: values.password,
           })
           .then((resp: User) => {
             saveUser(resp);
@@ -120,7 +120,7 @@ const AuthPage = () => {
           validate={validateHandler}
           onSubmit={(values, { setSubmitting }: FormikHelpers<AuthFields>) => {
             setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
+              submitHandler(values);
               setSubmitting(false);
             }, 400);
           }}

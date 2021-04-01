@@ -8,7 +8,7 @@ const TextInput = (props: {
   onChange: (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
   ) => void;
-  onBlur: (
+  onBlur?: (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
   ) => void;
   type?: "text" | "password" | "email" | "tel" | "area" | "number";

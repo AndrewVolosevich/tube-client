@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Layout from "~/components/layout";
 import Container from "~/UI/containers/container";

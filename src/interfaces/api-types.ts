@@ -1,7 +1,7 @@
 export interface UserCredentials {
-  username?: string;
-  email: string;
-  password: string;
+  username?: string | undefined;
+  email?: string | undefined;
+  password?: string | undefined;
 }
 
 export interface User {
